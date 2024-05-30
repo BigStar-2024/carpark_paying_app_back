@@ -1,5 +1,9 @@
 const express = require("express");
+const cors = require('cors');
+
 const app = express();
+ // Use CORS middleware
+ app.use(cors());
 // This is your test secret API key.
 const stripe = require("stripe")("sk_test_51P2lpQC9Zd6I2Ms1GvOYwHZUIGfQFbny1XJBEdABFVaLlko3erp8Zk5brxb7dHQJj45Hl0kVb3ddFb56nRdEHfwK00XRDvuqaN");
 app.use(express.static("public"));
