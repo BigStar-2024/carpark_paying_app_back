@@ -44,6 +44,10 @@ const chargeCustomer = async (customerId) => {
   }
 };
 
+app.get("/", (req, res) => {
+  res.send("Hello")
+});
+
 app.post("/create-payment-intent", async (req, res) => {
   const { items } = req.body;
   // console.log(items[0].amount);
