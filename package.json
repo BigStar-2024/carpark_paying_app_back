@@ -5,12 +5,13 @@
   "dependencies": {
     "@stripe/react-stripe-js": "^2.6.2",
     "@stripe/stripe-js": "^1.0.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "stripe": "^14.24.0"
   },
   "homepage": "http://localhost:3000/",
   "proxy": "http://localhost:4242",
-  "scripts": {  
+  "scripts": {
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "start": "node server.js"
