@@ -44,7 +44,7 @@ app.get("/", (req, res) => {
   res.send("Hello")
 });
 
-app.post(`${process.env.BACKEND_URL}/create-payment-intent`, async (req, res) => {
+app.post("/create-payment-intent", async (req, res) => {
   console.log("path: ", process.env.BACKEND_URL)
   const { items } = req.body;
   // console.log(items[0].amount);
