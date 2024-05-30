@@ -45,7 +45,6 @@ app.get("/", (req, res) => {
 });
 
 app.post("/create-payment-intent", async (req, res) => {
-  console.log("path: ", process.env.BACKEND_URL)
   const { items } = req.body;
   // console.log(items[0].amount);
   // Alternatively, set up a webhook to listen for the payment_intent.succeeded event
