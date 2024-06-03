@@ -89,7 +89,7 @@ app.get('/payments_log', async (req, res) => {
     limit: 1,
   });
   // console.log(paymentIntents_list);
-  console.log(paymentIntents_list.data);
+  // console.log(paymentIntents_list.data);
   res.send({data: paymentIntents_list.data});
   
 })
