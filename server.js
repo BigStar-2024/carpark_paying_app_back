@@ -1,6 +1,6 @@
 const express = require("express");
-const cors = require('cors');
 const app = express();
+const cors = require('cors');
 const mongoose = require('mongoose')
 // Use CORS middleware
 app.use(cors());
@@ -10,7 +10,11 @@ app.use(express.static("public"));
 app.use(express.json());
 
 const userRouter = require('./routers/user');
+const paymentlogRouter = require('./routers/paymentLog');
+
+const { mongoURI } = require('./config/config');
 app.use("/", userRouter);
+app.use('/', paymentlogRouter);
 
 
 // const paymentIntentss = await stripe.paymentIntents.list({
@@ -90,27 +94,9 @@ app.get('/payments_log', async (req, res) => {
   
 })
 
-
-// Connect to MongoDB
-mongoose.connect('mongodb://https://city-park-lot.run.place/city-park-lot:27017/PaymentLog', { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => {
-    console.log("Connect Success!")
-  })
-  .catch((err) => {
-    console.error(err);
-  });
-
-// Define a scema and model for your data
-const PaymentLog = mongoose.model('PaymentLog', {value: String});
-
-// API endpoint to save data to MongoDB
-app.post('/save-data', (req, res) => {
-  const {value} = req.body;
-  const newData = new PaymentLog({ value });
-  newData.save()
-  .then(() => res.send('Data saved to MongoDB'))
-  .catch(err => res.status(500).send(err));
-}); 
+mongoose.connect(mongoURI).then(() => {
+  console.log("Successfully connected!")
+}).catch(() => console.log("Connection Failed!"));
 
 // Start the server
 app.listen(4242, () => console.log("Node server listening on port 4242!"));
