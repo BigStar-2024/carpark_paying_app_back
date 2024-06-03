@@ -94,7 +94,10 @@ app.get('/payments_log', async (req, res) => {
   
 })
 
-mongoose.connect(mongoURI).then(() => {
+mongoose.connect(mongoURI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+}).then(() => {
   console.log("Successfully connected!")
 }).catch(() => console.log("Connection Failed!"));
 
